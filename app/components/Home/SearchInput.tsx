@@ -13,7 +13,7 @@ const SearchInput = () => {
             <input type='text' placeholder='Location' className='p-2 outline-none bg-transparent text-black'/>
         </div>
         <div className='flex items-center text-black ' >
-            <input type='date' className='p-2 outline-none bg-transparent' />
+            <input type='date' className='p-2 outline-none bg-gray-50' />
         </div>
         </div>
         
