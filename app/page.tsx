@@ -7,7 +7,19 @@ import {
 import Hero from "./components/Home/Hero";
 import SearchInput from "./components/Home/SearchInput";
 import CarsfilterOptions from "./components/Home/CarsfilterOptions";
+import { getCarsList } from "@/services";
+import { useState, useEffect } from "react";
 export default function Home() {
+  const [carList,setCarList] = useState<any>([])
+  useEffect(()=>{
+   
+    getCarList_()
+  },[])
+  const getCarList_ = async()=>{
+    const result :any = await getCarsList()
+    console.log(result)
+   setCarList(result?.carLists)
+  }
   return (
     <div>
       
