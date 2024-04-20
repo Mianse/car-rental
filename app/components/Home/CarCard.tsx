@@ -13,7 +13,7 @@ const CarCard = (props:any) => {
         }
     },[props.car])
   return car&&(
-    <div className='rounded-md group bg-gray-100  hover:bg-white hover: border-[1px] cursor-pointer hover:border-blue-500'>
+    <div className='rounded-md gap=2 group bg-gray-100  hover:bg-white hover: border-[1px] cursor-pointer hover:border-blue-500'>
       <h2 className='text-[20px] font-medium mb-2'>{car.name}</h2>
       <h2 className='text-[30px] font-bold mb-2 text-black'>
         <span className='text-[12px] font-light'>Ksh</span>
@@ -40,7 +40,7 @@ const CarCard = (props:any) => {
       </div>
       <button
  
-  className="  mt-8  items-center rounded bg-blue-400 px-12 py-3 text-sm font-medium text-white hover:visible transition hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-400"
+  className="  mt-8  flex-end rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:visible transition hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-600"
 >
   Rent Car
 </button>

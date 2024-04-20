@@ -1,14 +1,27 @@
-import React from 'react';
+
+import { getStoreLocation } from '@/services';
+import React,{useEffect,useState} from 'react'
 
 const Form = () => {
+  const [storeLocation,setStoreLocation] = useState<any>()
+  useEffect(()=>{
+    getStoreLocation_()
+  })
+  const getStoreLocation_=async()=>{
+    const resp:any = await getStoreLocation()
+    console.log(resp)
+   setStoreLocation(resp?.storeLocations
+   )
+  }
   return (
     <div>
     <div className = 'flex w-full flex-col mb-5'>
       <select className="select w-full max-w-xs">
         <label className='text-gray-400'>Pick up Location</label>
        <option disabled selected>Pick up Location</option>
-          <option>Homer</option>
-        <option>Marge</option>
+          {storeLocation&&storeLocation.map((loc:any,index:number)=>(
+            <option key={index}>{loc?.address}</option>
+          ))}
   
     </select>
   </div>
