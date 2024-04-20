@@ -16,6 +16,7 @@ export const getCarsList = async ()=>{
             url
           }
           carType
+          carBrand
         }
       }
       

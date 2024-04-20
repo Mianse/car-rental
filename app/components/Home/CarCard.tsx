@@ -1,22 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import Image from 'next/image';
 import { PiSteeringWheel } from 'react-icons/pi';
 import { MdAirlineSeatReclineNormal } from 'react-icons/md';
 import { FaGasPump } from 'react-icons/fa';
 
 const CarCard = (props:any) => {
-    const [car,setCar] = useState(props.car)
+    const [car,setCar] = useState<any>()
     const fallbackImageUrl = '/fallback-image.jpg'; 
-  return (
-    <div className='group bg-gray-50 hover:bg-white p-2 hover: border-[1px] cursor-pointer hover:border-blue-500'>
+    useEffect(()=>{
+        if(props?.car){
+          setCar(props.car);
+        }
+    },[props.car])
+  return car&&(
+    <div className='group bg-gray-100 round-full hover:bg-white hover: border-[1px] cursor-pointer hover:border-blue-500'>
       <h2 className='text-[20px] font-medium mb-2'>{car.name}</h2>
-      <h2 className='text-[30px] font-bold mb-2'>
+      <h2 className='text-[30px] font-bold mb-2 text-black'>
         <span className='text-[12px] font-light'>Ksh</span>
         {car.price}
         <span className='text-[12px] font-light' >/day</span>
 
       </h2>
-      <Image src={car.image?.url} alt={car.name} width={220} height={200} className='object-contain mb-3 w-[250px] h-[180px]' />
+      <Image src={car.image?.url} alt={car.name} width={200} height={200} className='object-contain  w-[1000px] h-[400px]' />
       <div className='flex items-center justify-between'>
         <div className='text-center text-gray-500'>
             <PiSteeringWheel className='text-[22px] mb-2 w-full'/>
@@ -35,7 +40,7 @@ const CarCard = (props:any) => {
       </div>
       <button
  
-  className="mt-8 inline-block items-center rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring focus:ring-yellow-400"
+  className="  mt-8  items-center rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:visible transition hover:bg-blue-700 focus:outline-none focus:ring focus:ring-yellow-400"
 >
   Rent Car
 </button>
