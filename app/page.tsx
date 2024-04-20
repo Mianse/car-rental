@@ -29,17 +29,22 @@ export default function Home() {
       )
       setCarList(filterList)
   }
-  const orderCarList = (order:any)=>{
-    const sortedData= [...carOrgList].sort((a,b)=>
-      order==-1? a.price - b.price : b.price - a.price
-    )
-  }
+  const orderCarList = (order: any) => {
+    const sortedData = [...carOrgList].sort((a, b) => {
+      if (order == -1) {
+        return a.price - b.price; // Ascending order
+      } else {
+        return b.price - a.price; // Descending order
+      }
+    });
+    setCarList(sortedData);
+  };
   return (
     <div>
       
       <Hero/>
       <SearchInput/>
-      <CarsfilterOptions carList= {carOrgList} setBrand={(value:string)=>filterCarList(value)} orderCarList={(value:string)=>orderCarList(value)}/>
+      <CarsfilterOptions carList={carOrgList}  orderCarList={(value:string)=>orderCarList(value)} setBrand={(value:string)=>filterCarList(value)}/>
       <CarList carList={carList}/>
     </div>
   );

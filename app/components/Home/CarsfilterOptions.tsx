@@ -8,6 +8,7 @@ const CarsfilterOptions = ({carList,setBrand,orderCarList}:any) => {
     const updateCarList = () => {
         if (carList) {
             filterCarList();
+            
         }
     };
 
@@ -15,10 +16,12 @@ const CarsfilterOptions = ({carList,setBrand,orderCarList}:any) => {
         carList.forEach((element:any) => {
             BrandSet.add(element.carBrand)
         });
-        console.log(BrandSet)
+        //console.log(BrandSet)
+        
+
         setCarBrandList(Array.from(BrandSet));
     };
-
+    console.log(carList)
     useEffect(() => {
         updateCarList();
     }, [carList]);
@@ -30,12 +33,11 @@ const CarsfilterOptions = ({carList,setBrand,orderCarList}:any) => {
                 <h2>Explore our cars you might like</h2>
             </div>
             <div className='flex gap-5'>
-                <select className="select select-bordered w-full max-w-xs">
-                    <option disabled selected>Price</option>
-                    <option>min to max</option>
-
-                    <option>max to min</option>
-                </select>
+<select className="select select-bordered w-full max-w-xs" onChange={(e) => orderCarList(e.target.value)}>
+    <option disabled selected>Price</option>
+    <option value={-1}>min to max</option>
+    <option value={1}>max to min</option>
+</select>
                 <select className="select select-bordered w-full md:block max-w-xs hidden" onChange={(e)=>setBrand(e.target.value)}>
                     <option disabled selected>Brand</option>
                     {carBrandList&&carBrandList.map((brand: string, index: number) => (
