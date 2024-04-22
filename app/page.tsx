@@ -10,6 +10,7 @@ import CarsfilterOptions from "./components/Home/CarsfilterOptions";
 import { getCarsList } from "@/services";
 import { useState, useEffect } from "react";
 import CarList from "./components/Home/CarList";
+import ToastMsg from "./components/Home/ToastMsg";
 export default function Home() {
   const [carList,setCarList] = useState<any>([])
   const [carOrgList,setCarOrgList] = useState<any>([])
@@ -46,6 +47,7 @@ export default function Home() {
       <SearchInput/>
       <CarsfilterOptions carList={carOrgList}  orderCarList={(value:string)=>orderCarList(value)} setBrand={(value:string)=>filterCarList(value)}/>
       <CarList carList={carList}/>
+      <ToastMsg/>
     </div>
   );
 }

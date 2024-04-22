@@ -8,6 +8,7 @@ export const getCarsList = async ()=>{
         carLists {
           carAvg
           createdAt
+          id
           name
           price
           publishedAt
@@ -36,9 +37,33 @@ export const getStoreLocation =async ()=>{
       address
     }
   }
-  
+
+
   
   `
   const result = await request(MASTER_URL,querry);
   return result
 }
+
+export const createBooking = async (formValue : any) => {
+  const mutationQuery = gql`
+    mutation MyMutation {
+      createBooking(
+        data: {
+          userName: "${formValue.userName}",
+          pickUpDate: "${formValue.pickUpDate}",
+          dropOffDate: "${formValue.dropOffDate}",
+          pickUpTime: "${formValue.pickUpTime}",
+          dropOffTime: "${formValue.dropOffTime}",
+          contactNumber: "${formValue.contactNumber}",
+          carId: { connect: { id: "${formValue.carId}" } }
+        }
+      ) {
+        id
+      }
+    }
+  `;
+
+  const result = await request(MASTER_URL, mutationQuery);
+  return result;
+};

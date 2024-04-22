@@ -14,13 +14,10 @@ const BookingModal = ({car}:any) => {
                 <CarCard car={car}/>
             </div>
             <div>
-                <Form/>
+                <Form car={car}/>
             </div>
         </div>
-        <div className='modal-action'>
-        {/*if there is a  button it will close the modal */}
-        <button className='btn'>close</button>
-        </div>
+        
       </form>
   );
 }
